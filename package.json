@@ -1,0 +1,31 @@
+{
+  "name": "jokedb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "clear & node server.js",
+    "server": "clear & node server.js",
+    "sass": "sass lib:public ",
+    "testdb": "clear & mocha ./lib/db.test.js ",
+    "testapi": "clear & mocha ./lib/JokeListApi.test.js ",
+    "watch": "./scripts/watch.sh "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "express": "^4.17.3",
+    "express-graphql": "^0.12.0",
+    "json5": "^2.2.0",
+    "morgan": "^1.10.0",
+    "prompts": "^2.4.2",
+    "sass": "^1.49.9",
+    "sequelize": "^6.16.1",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.0"
+  }
+}

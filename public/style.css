@@ -1,0 +1,66 @@
+body {
+  font: 16px "Lucida Grande", Arial, sans-serif;
+  background: white;
+  color: #333;
+}
+
+img {
+  background-image: red;
+  position: fixed;
+  top: 5em;
+  right: 5em;
+  width: 100px;
+  -webkit-filter: drop-shadow(3px 3px 2px silver);
+          filter: drop-shadow(3px 3px 2px silver);
+}
+
+h1 {
+  -webkit-filter: drop-shadow(3px 3px 2px silver);
+          filter: drop-shadow(3px 3px 2px silver);
+}
+
+.controls {
+  display: block;
+  margin: 20vh auto;
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.controls h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.buttons .material-icons {
+  cursor: pointer;
+  font-size: 4em;
+  margin: 0;
+}
+
+.text {
+  margin: 1em 0 0 0;
+}
+
+.text div {
+  border: none;
+  display: block;
+  font-size: 2em;
+  margin: 0 auto;
+  text-align: left;
+  max-width: 80vh;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.text #title {
+  text-align: center;
+  color: #4099;
+}
+
+.text #body {
+  padding-top: 0.5em;
+}
+/*# sourceMappingURL=style.css.map */

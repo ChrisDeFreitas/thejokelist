@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <title>The Joke List</title>
+    <link rel="icon" href="/noun-playful-2546421.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
+  </head>
+ <body>
+
+<a href='https://github.com/ChrisDeFreitas/thejokelist' target='_new'>
+  <img src='noun-playful-2546421.svg' />
+</a>
+
+<div class="controls">
+  <h1>The Joke List</h1>
+  <div class="buttons">
+
+<script>
+window.onload = () => random()
+
+var appserver = document.URL +'graphql'
+var joke = null // last joke return from server
+
+function newJoke( jokePacket ){
+  // console.log('jokePacket', jokePacket)
+  let keys = Object.keys( jokePacket )
+  let tmp = jokePacket[ keys[0] ]
+  if( tmp === null) {
+    alert('A joke was not retrieved from server.\n Try a random joke by clicking "?".')
+    return // error
+  }
+  
+  joke = tmp
+  let title = ( joke.title === null ? 'Untitled' :joke.title.trim() )
+  document.querySelector('#title').innerText = `#${joke.id}. ${title}`
+  document.querySelector('#body').innerText = joke.body.trim()
+  // console.log('joke', joke)
+}
+function last( event ){
+  let query = `{ prior( id:${joke.id} ) { id, title, body }}`
+  load( query )
+}
+function next( event ){
+  let query = `{ next( id:${joke.id} ) { id, title, body }}`
+  load( query )
+}
+function random( event ){
+  let query = `{ random { id, title, body }}`
+  load( query )
+}
+function load( query ){
+  let body = JSON.stringify({ query:query })
+  console.log('query body:', body)
+  // fetch( 'http://192.168.0.118:4000/graphql', {
+  fetch( appserver, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: body
+  })
+  .then(response => {
+    console.log('response', response)
+    return  response.json()
+  })
+  .then( result => {
+    // console.log('result', result)
+    if( result.data){
+      newJoke( result.data )
+    }
+    else
+      throw new Error( result )
+  })
+  .catch( error => {
+    alert('Error in Fetch request: \n' +error )
+  })
+}
+</script>
+<span onclick="last()" class="material-icons" title="Last Joke">west</span>
+&nbsp;
+<span onclick="random()" class="material-icons" title="'Random Joke">question_mark</span>
+&nbsp;
+<span onclick="next()" class="material-icons" title="Next Joke">east</span>
+
+  </div>
+  <div class="text">
+
+<div id='title'>title</div>
+<div id='body'>body</div>
+
+  </div>
+</div>
+
+</body>
+</html> 
