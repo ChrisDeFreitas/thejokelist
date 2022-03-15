@@ -1,10 +1,15 @@
 /*
   server.js
   by Chris DeFreitas
- 
+
+- http://localhost:4000/graphql?query={ random {id title body} }
+- http://localhost:4000/graphql?query={ next( id: 20) {id title body} }
+- http://localhost:4000/graphql?query={ prior( id: 20) {id title body} }
+
+- console:
 curl -X POST \
 -H "Content-Type: application/json" \
--d '{"query": "{ hello }"}' \
+-d '{"query": "{ test }"}' \
 http://localhost:4000/graphql
 
 
@@ -13,7 +18,6 @@ http://localhost:4000/graphql
 var express = require('express')
 var { graphqlHTTP } = require('express-graphql')
 var morgan = require('morgan')
-var serveStatic = require('serve-static')
 
 const { schema, root }  = require('./lib/graphql.schema' )
 
