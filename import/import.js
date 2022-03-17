@@ -24,7 +24,10 @@ let buf = ''
 let start = 0
 let end = 0
 let offset = 0
-let cnt = saved = skipped = 0
+let cnt = 0
+let saved = 0
+let skipped = 0
+
 function next(  ){
   start = buf.indexOf( '{', offset )
   if( start === -1 ) return false

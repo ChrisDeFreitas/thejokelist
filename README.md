@@ -1,6 +1,7 @@
 # The Joke List
 
-Doesn't every pandemic need some good jokes?
+Doesn't every pandemic need some good jokes? 
+- Check out: [The Joke List](http://thejokelist.netlify.com)
 
 As I was building [API-Harness](https://github.com/ChrisDeFreitas/API-Harness) I tested many free Joke APIs with unsatisfactory results. So I thought it would be a good idea to provide a free Joke website and API for public consumption.
 
@@ -14,7 +15,7 @@ My ulterior motive was to get some technology in place for coming projects. So t
 - CI/CD: PM2, Netlify-cli, vscode-live-sass-compiler
 
 ## Features
-- public website and API: thejokelist.netlify.com
+- public website and API: [thejokelist.netlify.com](thejokelist.netlify.com)
 - deploy a local website and API with Express.js web server and GraphQL endpoints
 - contains a SQLite database (db/jokelist.sqlite) with a ~100 row table of jokes. This is significantly smaller than the 200K JSON dataset because it’s filtered so my Mom can use the website. Will add more jokes over time.
 
