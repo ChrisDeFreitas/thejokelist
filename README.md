@@ -13,11 +13,37 @@ My ulterior motive was to get some technology in place for coming projects. So t
 - Express.js, GraphQL, Morgan, and PM2 for traditional web application development
 - Netlify and DBHub.io for serverless public cloud deployment
 - CI/CD: PM2, Netlify-cli, vscode-live-sass-compiler
+- UI testing with Gherkin/Cucumber-js and selenium-webdriver
 
 ## Features
 - public website and API: [thejokelist.netlify.com](thejokelist.netlify.com)
 - deploy a local website and API with Express.js web server and GraphQL endpoints
 - contains a SQLite database (db/jokelist.sqlite) with a ~100 row table of jokes. This is significantly smaller than the 200K JSON dataset because it’s filtered so my Mom can use the website. Will add more jokes over time.
+
+### UI Feature Tests (in [Gherkin syntax](https://cucumber.io/docs/gherkin/))
+
+```
+Feature: Random Joke
+
+  Scenario: Retrieve a random joke.
+    Given the home page is displayed
+    And  the Question Mark is clicked
+    Then a new joke appears
+
+Feature: Next Joke
+
+  Scenario: Retrieve the next joke by joke.id.
+    Given the home page is displayed
+    And  the Right Arrow is clicked
+    Then the next joke with an id larger than the last appears
+
+Feature: Prior Joke
+
+  Scenario: Retrieve the prior joke by joke.id.
+    Given the home page is displayed
+    And  the Left Arrow is clicked
+    Then the next joke with an id smaller than the last appears
+```
 
 ## Technical Notes
 
@@ -70,6 +96,7 @@ http://localhost:4000/graphql
 ## Thanks To
 - [Axios HTTP client](https://axios-http.com/)
 - [Chai a BDD/TDD assertion library](https://www.chaijs.com/)
+- [cucumber-js automated tests in plain language, for Node.js](https://github.com/cucumber/cucumber-js)
 - [DBHub.io cloud storage for SQLite databases](https://dbhub.io/)
 - [Express web application framework](https://expressjs.com/)
 - [express-graphql HTTP Server Middleware](https://github.com/graphql/express-graphql)
@@ -83,11 +110,19 @@ http://localhost:4000/graphql
 - [PM2 daemon process manager](https://www.npmjs.com/package/pm2)
 - [Prompts, CLI prompts to enquire users for information](https://www.npmjs.com/package/prompts)
 - [Sass CSS extension language](https://sass-lang.com)
+- [Selenium-webdriver browser automation library](https://www.npmjs.com/package/selenium-webdriver)
 - [Sequelize ORM](https://sequelize.org/)
 - [SQLite database engine](https://www.sqlite.org)
 - [SVG icon from the Noun Project global visual language](https://thenounproject.com/icon/playful-2546421/)
 - [vscode-live-sass-compiler](https://github.com/ritwickdey/vscode-live-sass-compiler)
 
+## Updates
+20220329
+- implemented UI testing with cucumber.js and selenium webdriver
+- updated index.html to work localy (GraphQL) and remotely (Netlify)
+
+
 ## ToDo
 - return same JSON structure from Express and Netlify
 - finish Netlify testing
+- replace Mocha/Chai with Cucumber-js

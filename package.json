@@ -2,14 +2,14 @@
   "name": "jokedb",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "run": "clear & node server.js",
     "server": "clear & node server.js",
     "sass": "sass src:public ",
     "testdb": "clear & mocha ./lib/db.test.js ",
     "testdbh": "clear & mocha ./netlify/dbhub.test.js ",
     "testapi": "clear & mocha ./lib/JokeListApi.test.js ",
+    "test.cucumber": "clear & npx cucumber-js ",
     "build.graphql": "cp ./src/index.graphql.html ./public/index.html",
     "build.netlify": "cp ./src/index.netlify.html ./public/index.html"
   },
@@ -28,7 +28,10 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^7.3.2",
     "chai": "^4.3.6",
-    "mocha": "^9.2.0"
+    "geckodriver": "^3.0.1",
+    "mocha": "^9.2.0",
+    "selenium-webdriver": "^4.1.1"
   }
 }
