@@ -17,8 +17,9 @@ const browser = new FireFoxWorld( {} )
 
 
 const log = console.log;
+// const url = 'http://localhost:8888/'      // netlify-cli server
 // const url = 'https://thejokelist.netlify.app/'
-const url = 'http://localhost:4000/'
+const url = 'http://localhost:4000/'   // express-graphql
 
 BeforeAll( {timeout: 20 * 1000}, async function() {
   log('Init...')
@@ -36,8 +37,9 @@ AfterAll( async function () {
 Given('the home page is displayed', async function () {
 
   await browser.open( url )
+  await browser.sleep( 1000 )   // pause for the initial api call to complete
+
   let result = await browser.exists( '.controls' )
-  
   assert.equal( true, result)
 })
 Then('a joke is displayed', async function () {
@@ -57,14 +59,15 @@ Given('the question mark is clicked', async function () {
 
   el = await browser.qry( '#random' )
   el.click()
-});
+  await browser.sleep( 1000 )   // pause for the initial api call to complete
+})
 Then('a new joke appears', async function () {
   
   let el = await browser.qry( '#title' )
   let newTitle = await el.getText()
   
   assert.equal( true, ( newTitle !== lastTitle ))
-});
+})
 
 // next joke feature
 var lastid = null
@@ -75,7 +78,8 @@ Given('the Right Arrow is clicked', async function () {
 
   let el = await browser.qry( '#next' )
   el.click()
-});
+  await browser.sleep( 1000 )   // pause for the initial api call to complete
+})
 Then('the next joke with an id larger than the last appears', async function () {
 
   let joke = await browser.exec('return joke;')
@@ -92,7 +96,8 @@ Given('the Left Arrow is clicked', async function () {
 
   let el = await browser.qry( '#last' )
   el.click()
-});
+  await browser.sleep( 1000 )   // pause for the initial api call to complete
+})
 Then('the next joke with an id smaller than the last appears', async function () {
 
   let joke = await browser.exec('return joke;')

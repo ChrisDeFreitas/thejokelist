@@ -20,7 +20,7 @@ My ulterior motive was to get some technology in place for coming projects. So t
 - deploy a local website and API with Express.js web server and GraphQL endpoints
 - contains a SQLite database (db/jokelist.sqlite) with a ~100 row table of jokes. This is significantly smaller than the 200K JSON dataset because it’s filtered so my Mom can use the website. Will add more jokes over time.
 
-### UI Feature Tests (in [Gherkin syntax](https://cucumber.io/docs/gherkin/))
+#### UI Feature Tests (in [Gherkin syntax](https://cucumber.io/docs/gherkin/))
 
 ```
 Feature: Random Joke
@@ -92,6 +92,15 @@ http://localhost:4000/graphql
   }
 }
 ```
+### Netlify CLI Development
+- references:  
+-- [Local Development](https://www.netlify.com/products/cli/)  
+-- [CLI get-started](https://docs.netlify.com/cli/get-started/)  
+-- [CLI command ref](https://cli.netlify.com/)  
+- start server (using local installation of CLI; default port 8888):  
+```BASH
+$ npx netlify dev
+```
 
 ## Thanks To
 - [Axios HTTP client](https://axios-http.com/)
@@ -117,12 +126,23 @@ http://localhost:4000/graphql
 - [vscode-live-sass-compiler](https://github.com/ritwickdey/vscode-live-sass-compiler)
 
 ## Updates
-20220329
+
+#### 20220331
+- installed netlify-cli locally as per: [netlify docs](https://github.com/netlify/cli#installation)
+- refactored index.html to remove javascript, and tweaked UI
+- created public.js with code from index.html; combined netlify, netlify-cli, and graphql server handling code
+- removed npm script commands build.graphql, and build.netlify with associated html files
+- updated [cucumber UI tests](./feature/thejokelist.steps.js) to work with netlify-cli  
+-- added firefox.world.sleep() because netlify-cli server is very slow
+- updated readme
+
+#### 20220329
 - implemented UI testing with cucumber.js and selenium webdriver
-- updated index.html to work localy (GraphQL) and remotely (Netlify)
+- created selenium webdriver harness: firefox.world.js  
+-- code to make default world failed; using as: browser = new require(...)
+- updated index.html to work locally (GraphQL) and remotely (Netlify)
 
 
 ## ToDo
-- return same JSON structure from Express and Netlify
 - finish Netlify testing
 - replace Mocha/Chai with Cucumber-js
