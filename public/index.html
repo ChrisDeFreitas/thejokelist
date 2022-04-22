@@ -3,39 +3,74 @@
   <head>
     <title>The Joke List</title>
     <meta charset="utf-8" />
-    <meta name="description" content="Netlify version of The Joke List; retrieves data from DBHub.io/jokelist.sqlite">
+    <meta name="description" content="Free jokes to pass the pandemic.">
     <meta name="author" content="Chris DeFreitas">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="icon" href="noun-playful-2546421.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml">
+    <link rel="icon" href="favicon.png" sizes="150x150" type="image/png">
+    <link rel="apple-touch-icon" href="favicon.png" sizes="150x150" type="image/png">
+
+    <meta property="og:title" content="The Joke List" />
+    <meta property="og:description" content="Free jokes to pass the pandemic." />
+    <meta property="og:url" content="https://thejokelist.netlify.app/" />
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    
     <script src="public.js"></script>
+    <script src="sendto.js"></script>
   </head>
  <body>
 
 <a href='https://github.com/ChrisDeFreitas/thejokelist' target='_new'>
-  <img src='noun-playful-2546421.svg' />
+  <img id="favicon" src='noun-playful-2546421.svg' />
 </a>
 
 <div class="controls">
   <h1>The Joke List</h1>
   <div class="buttons">
 
-<span id=last onclick="last()" class="material-icons" title="Last Joke">west</span>
-&nbsp;
-<span id=random onclick="random()" class="material-icons" title="'Random Joke">question_mark</span>
-&nbsp;
-<span id=next onclick="next()" class="material-icons" title="Next Joke">east</span>
+    <span id=last onclick="last()" class="material-icons" title="Last Joke">west</span>
+    &nbsp;
+    <span id=random onclick="random()" class="material-icons" title="'Random Joke">question_mark</span>
+    &nbsp;
+    <span id=next onclick="next()" class="material-icons" title="Next Joke">east</span>
 
   </div>
   <div class="text">
 
-<div id='title'>Loading joke...</div>
-<div id='body'></div>
+    <div id='title'>Loading joke...</div>
+    <div id='body'></div>
 
   </div>
+
+  <div class='shareLinks'>
+    <span onclick="sendJoke('facebook')">
+      <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//thejokelist.netlify.app/"> -->
+      <img src="icons/noun-facebook-63243.svg" title="Share on Facebook" />
+      Facebook
+    </span>
+    <span onclick="sendJoke('linkedin')">
+      <!-- <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//thejokelist.netlify.app/&title=TheJokeList&summary=Jokes%20to%20get%20you%20through%20the%20pandemic!&source="> -->
+      <img src="icons/noun-linkedin-2045581.svg" title="Share on LinkedIn" />
+      LinkedIn
+    </span>
+    <span onclick="sendJoke('twitter')">
+      <!-- <a href="https://twitter.com/intent/tweet?text=Checkout%20TheJokeList%3A%20https%3A//thejokelist.netlify.app/"> -->
+      <img src="icons/noun-bird-615066.svg" title="Share on Twitter" />
+      Twitter
+    </span>
+    <span onclick="sendJoke('whatsapp')">
+      <img src="icons/noun-smartphone-call-4652918.svg" title="Send via WhatsApp" />
+      WhatsApp
+    </span>
+    <span onclick="sendJoke('email')">
+      <!-- <a href="mailto:?subject=TheJokeList&body=Jokes%20to%20get%20you%20through%20the%20pandemic,%20checkout%3A%20%3Ca%20href=%22https%3A//thejokelist.netlify.app/%22%3ETheJokeList%3C/a%3E"> -->
+      <img src="icons/noun-email-4729250.svg" title="Send Email" />
+      Email
+    </span>
+  </div>
+  
 </div>
 
 </body>

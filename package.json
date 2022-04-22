@@ -5,12 +5,13 @@
   "main": "server.js",
   "scripts": {
     "pm2": "clear & pm2 start ecosystem.config.js & pm2 monit",
+    "pm2.stop": "clear & pm2 stop JokeListApi",
     "server": "clear & node server.js",
     "sass": "sass src:public ",
     "test.db": "clear & mocha ./lib/db.test.js ",
     "test.dbh": "clear & mocha ./netlify/dbhub.test.js ",
     "test.api": "clear & mocha ./lib/JokeListApi.test.js ",
-    "test.cucumber": "clear & npx cucumber-js "
+    "test.cucumber": "clear & npx cucumber-js --tags '@idEndpoint' "
   },
   "author": "",
   "license": "ISC",

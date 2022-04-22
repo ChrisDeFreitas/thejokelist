@@ -3,13 +3,17 @@
   by Chris DeFreitas
   - public Javascript functions for The Joke List web page: index.html
 
+  requires;
+  - sendto.js, post messages to social media
+  
 */
 var srvtype = null
 var appserver = null
 var joke = null // last joke return from server
+let log = console.log
 
 window.onload = () => {
-  appserver = document.URL 
+  appserver = document.location.origin +'/'
   if( appserver.indexOf( 'netlify') > 0 
    || appserver.indexOf( ':8888') > 0 ){
     srvtype = 'netlify'
@@ -19,10 +23,44 @@ window.onload = () => {
     srvtype = 'graphql'
     appserver += 'graphql/'
   }
-  console.log('appserver:', appserver)
+  log('appserver:', appserver)
   random()
+  // @ts-ignore
+  sendto.init()
 }
 
+function sendJoke( to ){
+ let url = 'https://thejokelist.netlify.app/'
+  let title = 'A Joke From TheJokeList'
+  let body = ( joke.title === null ? 'Untitled' :joke.title )
+           + '\n\n'
+           + joke.body
+           + '\n\n\n' //<br><br><br>'
+           + 'From: ' +url
+           
+  if( to === 'whatsapp' ){
+    // @ts-ignore
+    sendto.whatsapp( body )
+  }else
+  if( to === 'email' ){
+    // @ts-ignore
+    sendto.email( title, body )
+  }else
+  if( to === 'facebook' ){
+    // @ts-ignore
+    sendto.facebook( url, body )
+  }else
+  if( to === 'linkedin' ){
+    // @ts-ignore
+    sendto.linkedin( url, title, body )
+  }else
+  if( to === 'twitter' ){
+    // @ts-ignore
+    sendto.twitter( body )
+  }else
+    alert( `sendJoke() error, bad arg: [${to}].` )
+    
+}
 function newJoke( jokePacket ){
   if( srvtype === 'graphql' ){
     let keys = Object.keys( jokePacket )
@@ -71,11 +109,11 @@ function load( query ){
   ? appserver +'?query=' +query
   : appserver +query
   )
-  // console.log('query:', url)
+  // log('query:', url)
 
   fetch( url, { method: 'GET', })
   .then(response => {
-    // console.log('response', response)
+    // log('response', response)
     return  response.json()
   })
   .then( result => {
@@ -83,7 +121,7 @@ function load( query ){
       newJoke( result )
     } else 
     if( result.data ){    // graphql
-      // console.log( 'result', result.data )
+      // log( 'result', result.data )
       newJoke( result.data )
     }
     else {

@@ -66,14 +66,23 @@ where rownum = ${num}
 
 })
 
-describe('test dbhub.query', () => {
+describe('test dbhub methods', () => {
 
-  it(`test dbhub.random()`, async () => {
+  it(`test random() `, async () => {
 
     let row = await db.random()
-    console.log( 111, JSON.stringify( row, null, 2) )
+    // console.log( 111, JSON.stringify( row, null, 2) )
     expect( typeof row ).to.equal( 'object' )
     expect( Number( row.id )).to.not.equal( NaN )
+
+  })  
+
+  it(`test id() `, async () => {
+
+    let row = await db.id( 22 )
+    // console.log( 111, JSON.stringify( row, null, 2) )
+    expect( typeof row ).to.equal( 'object' )
+    expect( Number( row.id )).to.equal( 22 )
 
   })  
 

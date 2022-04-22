@@ -9,6 +9,7 @@
 
 const { BeforeAll, AfterAll, Given, Then } = require('@cucumber/cucumber')
 const assert = require('assert').strict
+const axios = require('axios')
 
 const FireFoxWorld = require( "./firefox.world.js" )
 const browser = new FireFoxWorld( {} )
@@ -105,3 +106,29 @@ Then('the next joke with an id smaller than the last appears', async function ()
 
   assert.equal( true, ( newid < lastid ))
 })
+
+
+// id() feature
+lastid = 22
+Given('the id enpoint is called with a joke.id', async function () {
+  let world = this
+  let endpoint = url +`graphql/?query={id( id:${lastid} ) {id, title, body} }`
+
+  // @ts-ignore
+  await axios.get( endpoint )
+  .then(function (response) {
+    world.response = response
+  })
+  .catch(function (error) {
+    world.response = error.response
+    // log( 'Endpoint call failed with:\n', error.toString() ) 
+    // return false
+  })
+  return true
+})
+Then('the returned status equals 200', function () {
+  assert.equal( 200, this.response.status )
+})
+Then('the returned joke has the same joke.id', function () {
+  assert.equal( lastid, this.response.data.data.id.id )
+})       

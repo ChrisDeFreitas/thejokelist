@@ -14,7 +14,10 @@ class db {
   apikey = null
   dbowner = null
   dbname = null
-  selectCols = 'id, title, body, category, score'
+
+  firstid = 0
+  lastid  = 0
+  selectCols = 'id, title, body, category, score'  
 
   constructor(){
     // get credentials from env
@@ -22,6 +25,35 @@ class db {
     this.dbowner = process.env.DBHUBdbowner
     this.dbname = "jokelist.sqlite"
     console.log('dbhub.dbowner', this.dbowner)
+
+    this.init()
+  }
+
+  async init(){
+    let rows = await this.query( 'Select id from joke order by id asc limit 1' )
+    this.firstid = rows[0].id
+    // console.log('jokelist.sqlite firstid:', this.firstid)
+
+    rows = await this.query( 'Select id from joke order by id desc limit 1' )
+    this.lastid = rows[0].id 
+    // console.log('jokelist.sqlite lastid:', this.lastid)
+  }
+
+  async id( id ){
+
+    let sql = `Select ${this.selectCols} from joke `
+    if( id !== null){
+      let num = Number( id )
+      if( isNaN( num ))
+        throw new Error(`JokeListApi.id() error, id is not a number:[${id}]`)
+      sql +=`Where id = ${num} `
+    }
+    // console.log('sql', sql)
+
+    let rows = await this.query( sql )
+    if( rows.length  === 0)
+      return null
+    return rows[0]
   }
 
   async random(){

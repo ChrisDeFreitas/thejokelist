@@ -1,15 +1,16 @@
 body {
-  font: 16px "Lucida Grande", Arial, sans-serif;
   background: white;
   color: #333;
+  font-family: "Lucida Grande", Arial, sans-serif;
+  font-size: 16px;
+  padding: 1em;
 }
 
-img {
-  background-image: red;
-  position: fixed;
-  top: 5em;
-  right: 5em;
-  width: 100px;
+#favicon {
+  position: relative;
+  margin: 2em 0 0 0;
+  right: -70vw;
+  width: 7em;
   -webkit-filter: drop-shadow(3px 3px 2px silver);
           filter: drop-shadow(3px 3px 2px silver);
 }
@@ -21,7 +22,7 @@ h1 {
 
 .controls {
   display: block;
-  margin: 12em auto;
+  margin: 2em auto;
   text-align: center;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -37,6 +38,15 @@ h1 {
   cursor: pointer;
   font-size: 4em;
   margin: 0;
+}
+
+.buttons .material-icons:hover {
+  -webkit-filter: drop-shadow(3px 3px 1px #999);
+          filter: drop-shadow(3px 3px 1px #999);
+}
+
+.buttons .material-icons:active {
+  color: red;
 }
 
 .text {
@@ -62,5 +72,38 @@ h1 {
 
 .text #body {
   padding-top: 0.5em;
+}
+
+.shareLinks {
+  margin: 4em auto 0 auto;
+}
+
+.shareLinks span {
+  color: #000;
+  display: inline-table;
+  font-size: 0.6em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.shareLinks span:visited {
+  color: #000;
+}
+
+.shareLinks img {
+  cursor: pointer;
+  maring: 0;
+  padding: 0 5px;
+  display: block;
+  width: 5em;
+}
+
+.shareLinks img:hover {
+  -webkit-filter: drop-shadow(3px 3px 1px #999);
+          filter: drop-shadow(3px 3px 1px #999);
+}
+
+.shareLinks img:active {
+  color: red;
 }
 /*# sourceMappingURL=style.css.map */

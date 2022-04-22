@@ -102,6 +102,18 @@ http://localhost:4000/graphql
 $ npx netlify dev
 ```
 
+### Netllify Deploy
+```Bash
+# 1. deploy draft website
+$ npx netlify deploy
+
+# 2. test draft
+
+# 3. deploy to production
+$ npx netlify deploy --prod
+```
+
+
 ## Thanks To
 - [Axios HTTP client](https://axios-http.com/)
 - [Chai a BDD/TDD assertion library](https://www.chaijs.com/)
@@ -116,23 +128,38 @@ $ npx netlify dev
 - [MDN Web Docs](https://developer.mozilla.org/en-US/)
 - [Netlify web development platform](https://www.netlify.com/)
 - [Node.js](https://nodejs.org/en/)
+- [Noun Project SVG icons](https://thenounproject.com), modified by Chris DeFreitas:  
+-- [Bird](https://thenounproject.com/icon/bird-615066/) by Oksana Latysheva  
+-- [Email](https://thenounproject.com/icon/email-4729250/) by rex  
+-- [Facebook](https://thenounproject.com/icon/facebook-63243/) by Saloni Sinha  
+-- [Linkedin](https://thenounproject.com/icon/linkedin-2045581/) by rivda  
+-- [Playful](https://thenounproject.com/icon/playful-2546421/) by Alice Design  
+-- [smartphone call](https://thenounproject.com/icon/smartphone-call-4652918/) by cakslankers  
 - [PM2 daemon process manager](https://www.npmjs.com/package/pm2)
 - [Prompts, CLI prompts to enquire users for information](https://www.npmjs.com/package/prompts)
 - [Sass CSS extension language](https://sass-lang.com)
 - [Selenium-webdriver browser automation library](https://www.npmjs.com/package/selenium-webdriver)
 - [Sequelize ORM](https://sequelize.org/)
+- [Share Link Generator](https://www.sharelinkgenerator.com) by Patrick St. John
 - [SQLite database engine](https://www.sqlite.org)
-- [SVG icon from the Noun Project global visual language](https://thenounproject.com/icon/playful-2546421/)
+- [The Open Graph protocol](https://ogp.me)
 - [vscode-live-sass-compiler](https://github.com/ritwickdey/vscode-live-sass-compiler)
 
 ## Updates
+
+#### 20220422
+- change document.URL to document.location.origin
+- new api endpoint to return joke by id: api.id( id )
+- added favicon.png; tweaked svg version
+- added social media share icons
+- added Open Graph protocol headers to index.html
 
 #### 20220331
 - installed netlify-cli locally as per: [netlify docs](https://github.com/netlify/cli#installation)
 - refactored index.html to remove javascript, and tweaked UI
 - created public.js with code from index.html; combined netlify, netlify-cli, and graphql server handling code
 - removed npm script commands build.graphql, and build.netlify with associated html files
-- updated [cucumber UI tests](./feature/thejokelist.steps.js) to work with netlify-cli  
+- updated [cucumber UI tests](./features/thejokelist.steps.js) to work with netlify-cli  
 -- added firefox.world.sleep() because netlify-cli server is very slow
 - updated readme
 
@@ -143,6 +170,8 @@ $ npx netlify dev
 - updated index.html to work locally (GraphQL) and remotely (Netlify)
 
 
-## ToDo
+## ToDo  
+- test failure return values from api.next(), api.find(), api.id()  
+- verify share links; linkedin requires jokeid: http...?jokeid=nnn
 - finish Netlify testing
 - replace Mocha/Chai with Cucumber-js
