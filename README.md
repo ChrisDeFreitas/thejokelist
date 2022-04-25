@@ -121,6 +121,7 @@ $ npx netlify deploy --prod
 - [DBHub.io cloud storage for SQLite databases](https://dbhub.io/)
 - [Express web application framework](https://expressjs.com/)
 - [express-graphql HTTP Server Middleware](https://github.com/graphql/express-graphql)
+- [Favicon checker](https://realfavicongenerator.net/favicon_checker)
 - [GraphQL query language for APIs](https://graphql.org)
 - [joke-dataset of English plaintext jokes](https://github.com/taivop/joke-dataset)
 - [Mocha test framework](https://mochajs.org/)
@@ -137,6 +138,7 @@ $ npx netlify deploy --prod
 -- [smartphone call](https://thenounproject.com/icon/smartphone-call-4652918/) by cakslankers  
 - [PM2 daemon process manager](https://www.npmjs.com/package/pm2)
 - [Prompts, CLI prompts to enquire users for information](https://www.npmjs.com/package/prompts)
+- [RealFaviconGenerator](https://realfavicongenerator.net/)
 - [Sass CSS extension language](https://sass-lang.com)
 - [Selenium-webdriver browser automation library](https://www.npmjs.com/package/selenium-webdriver)
 - [Sequelize ORM](https://sequelize.org/)
@@ -146,6 +148,10 @@ $ npx netlify deploy --prod
 - [vscode-live-sass-compiler](https://github.com/ritwickdey/vscode-live-sass-compiler)
 
 ## Updates
+
+### 20220425
+- added icons from [RealFaviconGenerator](https://realfavicongenerator.net/) 
+- verified icons with [Favicon checker](https://realfavicongenerator.net/favicon_checker)
 
 #### 20220422
 - change document.URL to document.location.origin
