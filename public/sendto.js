@@ -36,7 +36,7 @@ var sendto = {
     this.send( href )
   },
   sms( body ){
-    let href= `sms:&body=${body}` 
+    let href= `sms:?&body=${body}` 
     this.send( href )    
   },
   twitter( body ){
