@@ -54,6 +54,10 @@ function sendJoke( to ){
     // @ts-ignore
     sendto.linkedin( url, title, body )
   }else
+  if( to === 'sms' ){
+    // @ts-ignore
+    sendto.sms( body )
+  }else
   if( to === 'twitter' ){
     // @ts-ignore
     sendto.twitter( body )

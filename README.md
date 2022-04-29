@@ -136,6 +136,7 @@ $ npx netlify deploy --prod
 -- [Linkedin](https://thenounproject.com/icon/linkedin-2045581/) by rivda  
 -- [Playful](https://thenounproject.com/icon/playful-2546421/) by Alice Design  
 -- [smartphone call](https://thenounproject.com/icon/smartphone-call-4652918/) by cakslankers  
+-- [Sms](https://thenounproject.com/icon/sms-1212874/) by Arafat Uddin
 - [PM2 daemon process manager](https://www.npmjs.com/package/pm2)
 - [Prompts, CLI prompts to enquire users for information](https://www.npmjs.com/package/prompts)
 - [RealFaviconGenerator](https://realfavicongenerator.net/)
@@ -148,6 +149,9 @@ $ npx netlify deploy --prod
 - [vscode-live-sass-compiler](https://github.com/ritwickdey/vscode-live-sass-compiler)
 
 ## Updates
+
+### 20220428
+- added send by SMS function
 
 ### 20220425
 - added icons from [RealFaviconGenerator](https://realfavicongenerator.net/) 
